@@ -1,0 +1,16 @@
+<html ng-app="interstella">
+<title>Interstella 55C5: The 5tory of the 5ecret Cerego 5ystem</title>
+<head>
+<script src="jquery-2.2.1.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="interstella.js"></script>
+<link rel="stylesheet" type="text/css" href="interstella.css">
+</head>
+<body ng-controller="interstellaController">
+  <audio id="audio" controls="controls">
+    <source src="daft_stronger.mp3" type="audio/mpeg">
+  </audio>
+  <div class="team">
+    <img ng-repeat="member in team | filter:nameFilter" src="{{member.name}}-color.png">
+  </team>
+</body>
