@@ -1,3 +1,4 @@
+1.30,["iharlow","mlooney"]
 5.01,["asl", "eyoung"]
 6.30,["jpincar", "avolkovitsky"]
 8.50,["jstoecker", "estrom"]

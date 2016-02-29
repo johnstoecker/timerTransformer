@@ -11,6 +11,6 @@
     <source src="daft_stronger.mp3" type="audio/mpeg">
   </audio>
   <div class="team">
-    <img ng-repeat="member in team | filter:nameFilter" src="{{member.name}}-color.png">
+    <img ng-repeat="member in team" src="{{member}}-color.png" id="{{member}}" class="current">
   </team>
 </body>

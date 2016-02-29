@@ -1,39 +1,8 @@
 angular.module('interstella', [])
   .controller('interstellaController', ($scope, $interval) ->
-    $scope.currentNames = ["asl", "eyoung"]
-    $scope.team = [{
-      name: "asl"
-    }, {
-      name: "eyoung"
-    }, {
-      name: "pmumma"
-    }, {
-      name: "lbrown"
-    }, {
-      name: "jpincar"
-    }, {
-      name: "avolkovitsky"
-    }, {
-      name: "krichert"
-    }, {
-      name: "jhancock"
-    }, {
-      name: "kstewart"
-    }, {
-      name: "jstoecker"
-    }, {
-      name: "estrom"
-    }, {
-      name: "dryan"
-    }, {
-      name: "jdhague"
-    }, {
-      name: "dcameron"
-    }, {
-      name: "iharlow"
-    }, {
-      name: "mlooney"
-    }]
+    $scope.lastNames = []
+    $scope.nextNames = []
+    $scope.team = $scope.currentNames = ["asl","eyoung","pmumma","lbrown","jpincar","avolkovitsky","krichert","jhancock","kstewart","jstoecker","estrom","dryan","jdhague","dcameron","iharlow","mlooney"]
 
     $scope.pollAudio = () ->
       now = $("#audio")[0].currentTime
@@ -46,7 +15,18 @@ angular.module('interstella', [])
 
     $scope.doTransition = () ->
       console.log("Transform")
+      $scope.lastNames = $scope.currentNames
       $scope.currentNames = $scope.timings[$scope.currentTimingIndex].names
+      $scope.nextNames = $scope.timings[$scope.currentTimingIndex+1].names if $scope.timings[$scope.currentTimingIndex+1]
+      $.each $scope.lastNames, (index, name) ->
+        $("#"+name).removeClass()
+        $("#"+name).addClass("last")
+      $.each $scope.currentNames, (index, name) ->
+        $("#"+name).removeClass()
+        $("#"+name).addClass("current")
+      $.each $scope.nextNames, (index, name) ->
+        $("#"+name).removeClass()
+        $("#"+name).addClass("next")
     $scope.nameFilter = (member) ->
       $scope.currentNames.indexOf(member.name) != -1
     $scope.timings = []
@@ -60,5 +40,5 @@ angular.module('interstella', [])
           i = elem.indexOf(',')
           time = elem.slice(0, i)
           $scope.timings.push({time: parseFloat(time), names: JSON.parse(elem.slice(i+1))})
-          $interval $scope.pollAudio, 500
+          $interval $scope.pollAudio, 500, 100
 )

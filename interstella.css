@@ -7,6 +7,26 @@ audio {
 
 img {
   flex: 0 0 auto;
-  margin: 10px; }
+  transition: visibility 0s, opacity .25s ease-in-out;
+  -moz-transition: visibility 0s, opacity .25s ease-in-out;
+  -webkit-transition: visibility 0s, opacity .25s ease-in-out; }
+
+.last {
+  order: 1;
+  height: 0px;
+  width: 0px;
+  visibility: hidden;
+  opacity: 0; }
+
+.current {
+  order: 0;
+  margin: 10px;
+  visibility: visible;
+  opacity: 1; }
+
+.next {
+  order: 2;
+  visibility: hidden;
+  opacity: 0; }
 
 /*# sourceMappingURL=interstella.css.map */
